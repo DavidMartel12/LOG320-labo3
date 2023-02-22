@@ -6,5 +6,5 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         var doc = new DocDist();
-        doc.docDistance(".\\src\\monte_cristo_1-Dumas.txt", ".\\src\\monte_cristo_2-Dumas.txt");    }
+        doc.docDistance( ".\\src\\fables_Lafontaine.txt",".\\src\\l_avare-Moliere.txt");    }
 }
