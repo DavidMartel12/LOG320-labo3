@@ -23,7 +23,24 @@ public class Helper {
                     frequenceTable.put(motMinuscule, 1);
             }
         }
-
         return frequenceTable;
+    }
+
+    public int scalarProduct(HashMap<String, Integer> table1, HashMap<String, Integer> table2) {
+        int produitScalaire = 0;
+        for (String key : table1.keySet()) {
+            if (table2.containsKey(key)) {
+                produitScalaire += table1.get(key) * table2.get(key);
+            }
+        }
+        return produitScalaire;
+    }
+
+    public double norm(HashMap<String, Integer> table) {
+        double norme = 0;
+        for (String key : table.keySet()) {
+            norme += Math.pow(table.get(key), 2);
+        }
+        return Math.sqrt(norme);
     }
 }
