@@ -18,8 +18,7 @@ public class Helper {
                 String motMinuscule = words[i].toLowerCase();
                 if (frequenceTable.containsKey(motMinuscule)) {
                     frequenceTable.put(motMinuscule, frequenceTable.get(motMinuscule) + 1);
-                }
-                else
+                } else
                     frequenceTable.put(motMinuscule, 1);
             }
         }
