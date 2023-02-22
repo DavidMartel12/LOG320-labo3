@@ -23,11 +23,12 @@ public class Helper {
                     frequenceTable.put(motMinuscule, 1);
             }
         }
+        frequenceTable.remove("");
         return frequenceTable;
     }
 
-    public int scalarProduct(HashMap<String, Integer> table1, HashMap<String, Integer> table2) {
-        int produitScalaire = 0;
+    public double scalarProduct(HashMap<String, Integer> table1, HashMap<String, Integer> table2) {
+        double produitScalaire = 0;
         for (String key : table1.keySet()) {
             if (table2.containsKey(key)) {
                 produitScalaire += table1.get(key) * table2.get(key);

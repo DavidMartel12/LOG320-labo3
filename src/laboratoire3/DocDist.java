@@ -18,8 +18,8 @@ public class DocDist{
             Helper helper = new Helper();
             HashMap<String, Integer> tableFichier1 = helper.createFrequencyTable(new File(nomFichier1));
             HashMap<String, Integer> tableFichier2 = helper.createFrequencyTable(new File(nomFichier2));
-
-            int produitScalaire = helper.scalarProduct(tableFichier1, tableFichier2);
+System.out.println(tableFichier1);
+            double produitScalaire = helper.scalarProduct(tableFichier1, tableFichier2);
             double norme1 = helper.norm(tableFichier1);
             double norme2 = helper.norm(tableFichier2);
             radian = Math.acos(produitScalaire / (norme1 * norme2));
