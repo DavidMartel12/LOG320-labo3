@@ -1,21 +1,41 @@
 package laboratoire3;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class Helper {
 
-    public HashMap<String, Integer> createFrequencyTable(File fichier) throws IOException {
+        public HashMap<String, Integer> createFrequencyTable(File fichier) throws IOException {
 
         HashMap<String, Integer> frequenceTable = new HashMap<>();
         FileReader fl = new FileReader(fichier);
         BufferedReader br = new BufferedReader(fl);
         String line;
         while ((line = br.readLine()) != null) {
-            String[] words = line.split("[^\\p{L}\\p{N}\\p{M}]");
-            for (int i = 0; i < words.length; i++) {
-                String motMinuscule = words[i].toLowerCase();
+            List<String> words = new ArrayList<>();
+            int start = -1;
+            for (int i = 0; i < line.length(); i++) {
+                char c = line.charAt(i);
+                if (Character.isLetterOrDigit(c)) {
+                    if (start == -1) {
+                        start = i;
+                    }
+                } else {
+                    if (start != -1) {
+                        words.add(line.substring(start, i));
+                        start = -1;
+                    }
+                }
+            }
+            if (start != -1) {
+                words.add(line.substring(start));
+            }
+
+            for (var word : words) {
+                String motMinuscule = word.toLowerCase();
                 if (frequenceTable.containsKey(motMinuscule)) {
                     frequenceTable.put(motMinuscule, frequenceTable.get(motMinuscule) + 1);
                 } else
