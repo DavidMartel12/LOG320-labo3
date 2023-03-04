@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.lang.Math;
+import java.util.Map;
 
 public class DocDist {
 
@@ -15,8 +16,8 @@ public class DocDist {
 
         try {
             Helper helper = new Helper();
-            HashMap<String, Integer> tableFichier1 = helper.createFrequencyTable(new File(nomFichier1));
-            HashMap<String, Integer> tableFichier2 = helper.createFrequencyTable(new File(nomFichier2));
+            Map<String, Integer> tableFichier1 = helper.createFrequencyTable(new File(nomFichier1));
+            Map<String, Integer> tableFichier2 = helper.createFrequencyTable(new File(nomFichier2));
 
             double produitScalaire = helper.scalarProduct(tableFichier1, tableFichier2);
             double norme1 = helper.norm(tableFichier1);

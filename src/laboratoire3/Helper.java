@@ -1,23 +1,22 @@
 package laboratoire3;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Helper {
 
-        public HashMap<String, Integer> createFrequencyTable(File fichier) throws IOException {
+        public Map<String, Integer> createFrequencyTable(File fichier) throws IOException {
 
-        HashMap<String, Integer> frequenceTable = new HashMap<>();
+        Map<String, Integer> frequenceTable = new HashMap<>();
         FileReader fl = new FileReader(fichier);
         BufferedReader br = new BufferedReader(fl);
         String line;
+        // int wordCounter = 0;
         while ((line = br.readLine()) != null) {
             var words = separateWordFromString(line);
 
             for (var word : words) {
+                // wordCounter++;
                 String motMinuscule = word.toLowerCase();
                 if (frequenceTable.containsKey(motMinuscule)) {
                     frequenceTable.put(motMinuscule, frequenceTable.get(motMinuscule) + 1);
@@ -25,10 +24,13 @@ public class Helper {
                     frequenceTable.put(motMinuscule, 1);
             }
         }
+        // Show debug msg
+        // System.out.println(fichier.getName() + ": " + wordCounter + " words, " + frequenceTable.size() + " distinct words");
         frequenceTable.remove("");
         return frequenceTable;
     }
-    private List<String> separateWordFromString(String line) {
+
+    public List<String> separateWordFromString(String line) {
         List<String> words = new ArrayList<>();
         int start = -1;
         for (int i = 0; i < line.length(); i++) {
@@ -49,7 +51,7 @@ public class Helper {
         }
         return words;
     }
-    public double scalarProduct(HashMap<String, Integer> table1, HashMap<String, Integer> table2) {
+    public double scalarProduct(Map<String, Integer> table1, Map<String, Integer> table2) {
         double produitScalaire = 0;
         for (String key : table1.keySet()) {
             if (table2.containsKey(key)) {
@@ -59,7 +61,7 @@ public class Helper {
         return produitScalaire;
     }
 
-    public double norm(HashMap<String, Integer> table) {
+    public double norm(Map<String, Integer> table) {
         double norme = 0;
         for (String key : table.keySet()) {
             norme += Math.pow(table.get(key), 2);
