@@ -15,7 +15,7 @@ public class Helper {
         BufferedReader br = new BufferedReader(fl);
         String line;
         while ((line = br.readLine()) != null) {
-            var words = separateString(line);
+            var words = separateWordFromString(line);
 
             for (var word : words) {
                 String motMinuscule = word.toLowerCase();
@@ -28,7 +28,7 @@ public class Helper {
         frequenceTable.remove("");
         return frequenceTable;
     }
-    private List<String> separateString(String line) {
+    private List<String> separateWordFromString(String line) {
         List<String> words = new ArrayList<>();
         int start = -1;
         for (int i = 0; i < line.length(); i++) {
