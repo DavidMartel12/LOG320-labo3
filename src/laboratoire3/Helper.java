@@ -15,24 +15,7 @@ public class Helper {
         BufferedReader br = new BufferedReader(fl);
         String line;
         while ((line = br.readLine()) != null) {
-            List<String> words = new ArrayList<>();
-            int start = -1;
-            for (int i = 0; i < line.length(); i++) {
-                char c = line.charAt(i);
-                if (Character.isLetterOrDigit(c)) {
-                    if (start == -1) {
-                        start = i;
-                    }
-                } else {
-                    if (start != -1) {
-                        words.add(line.substring(start, i));
-                        start = -1;
-                    }
-                }
-            }
-            if (start != -1) {
-                words.add(line.substring(start));
-            }
+            var words = separateString(line);
 
             for (var word : words) {
                 String motMinuscule = word.toLowerCase();
@@ -45,7 +28,27 @@ public class Helper {
         frequenceTable.remove("");
         return frequenceTable;
     }
-
+    private List<String> separateString(String line) {
+        List<String> words = new ArrayList<>();
+        int start = -1;
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (Character.isLetterOrDigit(c)) {
+                if (start == -1) {
+                    start = i;
+                }
+            } else {
+                if (start != -1) {
+                    words.add(line.substring(start, i));
+                    start = -1;
+                }
+            }
+        }
+        if (start != -1) {
+            words.add(line.substring(start));
+        }
+        return words;
+    }
     public double scalarProduct(HashMap<String, Integer> table1, HashMap<String, Integer> table2) {
         double produitScalaire = 0;
         for (String key : table1.keySet()) {
